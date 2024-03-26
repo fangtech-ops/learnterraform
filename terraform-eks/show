@@ -1,0 +1,517 @@
+[0m# aws_eip.public_http["instance-http-1"]:
+resource "aws_eip" "public_http" {
+    [1m[0massociation_id[0m[0m       = "eipassoc-0549319f536a61770"
+    [1m[0mdomain[0m[0m               = "vpc"
+    [1m[0mid[0m[0m                   = "eipalloc-0a5d76e545207b96f"
+    [1m[0minstance[0m[0m             = "i-0644aa90a15747c21"
+    [1m[0mnetwork_border_group[0m[0m = "us-west-2"
+    [1m[0mnetwork_interface[0m[0m    = "eni-091bb5ca930f5a8e5"
+    [1m[0mprivate_dns[0m[0m          = "ip-10-10-1-14.us-west-2.compute.internal"
+    [1m[0mprivate_ip[0m[0m           = "10.10.1.14"
+    [1m[0mpublic_dns[0m[0m           = "ec2-44-224-238-62.us-west-2.compute.amazonaws.com"
+    [1m[0mpublic_ip[0m[0m            = "44.224.238.62"
+    [1m[0mpublic_ipv4_pool[0m[0m     = "amazon"
+    [1m[0mtags[0m[0m                 = {
+        "Name" = "public-http-instance-http-1"
+    }
+    [1m[0mvpc[0m[0m                  = true
+}
+
+# aws_eip.public_http["instance-http-2"]:
+resource "aws_eip" "public_http" {
+    [1m[0massociation_id[0m[0m       = "eipassoc-057f007d661b4d09d"
+    [1m[0mdomain[0m[0m               = "vpc"
+    [1m[0mid[0m[0m                   = "eipalloc-050fd7ab9c796f900"
+    [1m[0minstance[0m[0m             = "i-094553efbe54fae0e"
+    [1m[0mnetwork_border_group[0m[0m = "us-west-2"
+    [1m[0mnetwork_interface[0m[0m    = "eni-04946da1134fd55f9"
+    [1m[0mprivate_dns[0m[0m          = "ip-10-10-1-161.us-west-2.compute.internal"
+    [1m[0mprivate_ip[0m[0m           = "10.10.1.161"
+    [1m[0mpublic_dns[0m[0m           = "ec2-54-212-143-129.us-west-2.compute.amazonaws.com"
+    [1m[0mpublic_ip[0m[0m            = "54.212.143.129"
+    [1m[0mpublic_ipv4_pool[0m[0m     = "amazon"
+    [1m[0mtags[0m[0m                 = {
+        "Name" = "public-http-instance-http-2"
+    }
+    [1m[0mvpc[0m[0m                  = true
+}
+
+# aws_instance.http["instance-http-1"]:
+resource "aws_instance" "http" {
+    [1m[0mami[0m[0m                          = "ami-0928f4202481dfdf6"
+    [1m[0marn[0m[0m                          = "arn:aws:ec2:us-west-2:271868875615:instance/i-0644aa90a15747c21"
+    [1m[0massociate_public_ip_address[0m[0m  = false
+    [1m[0mavailability_zone[0m[0m            = "us-west-2b"
+    [1m[0mcpu_core_count[0m[0m               = 1
+    [1m[0mcpu_threads_per_core[0m[0m         = 2
+    [1m[0mdisable_api_termination[0m[0m      = false
+    [1m[0mebs_optimized[0m[0m                = false
+    [1m[0mget_password_data[0m[0m            = false
+    [1m[0mhibernation[0m[0m                  = false
+    [1m[0mid[0m[0m                           = "i-0644aa90a15747c21"
+    [1m[0minstance_state[0m[0m               = "running"
+    [1m[0minstance_type[0m[0m                = "t3.large"
+    [1m[0mipv6_address_count[0m[0m           = 0
+    [1m[0mipv6_addresses[0m[0m               = []
+    [1m[0mkey_name[0m[0m                     = "charles"
+    [1m[0mmonitoring[0m[0m                   = false
+    [1m[0mprimary_network_interface_id[0m[0m = "eni-091bb5ca930f5a8e5"
+    [1m[0mprivate_dns[0m[0m                  = "ip-10-10-1-14.us-west-2.compute.internal"
+    [1m[0mprivate_ip[0m[0m                   = "10.10.1.14"
+    [1m[0msecondary_private_ips[0m[0m        = []
+    [1m[0msecurity_groups[0m[0m              = []
+    [1m[0msource_dest_check[0m[0m            = true
+    [1m[0msubnet_id[0m[0m                    = "subnet-09ac4f8d70bdd8a59"
+    [1m[0mtags[0m[0m                         = {
+        "Name" = "instance-http-1"
+    }
+    [1m[0mtenancy[0m[0m                      = "default"
+    [1m[0muser_data[0m[0m                    = "13a85b70ffbe2a4138f02b3f920bea9687517de4"
+    [1m[0mvpc_security_group_ids[0m[0m       = [
+        "sg-01116a2d8621b5ae4",
+        "sg-09efb17d2d9913811",
+    ]
+
+    credit_specification {
+        [1m[0mcpu_credits[0m[0m = "unlimited"
+    }
+
+    enclave_options {
+        [1m[0menabled[0m[0m = false
+    }
+
+    metadata_options {
+        [1m[0mhttp_endpoint[0m[0m               = "enabled"
+        [1m[0mhttp_put_response_hop_limit[0m[0m = 1
+        [1m[0mhttp_tokens[0m[0m                 = "optional"
+    }
+
+    root_block_device {
+        [1m[0mdelete_on_termination[0m[0m = true
+        [1m[0mdevice_name[0m[0m           = "/dev/sda1"
+        [1m[0mencrypted[0m[0m             = false
+        [1m[0miops[0m[0m                  = 100
+        [1m[0mtags[0m[0m                  = {}
+        [1m[0mthroughput[0m[0m            = 0
+        [1m[0mvolume_id[0m[0m             = "vol-0713aa1b2eb721c63"
+        [1m[0mvolume_size[0m[0m           = 8
+        [1m[0mvolume_type[0m[0m           = "gp2"
+    }
+}
+
+# aws_instance.http["instance-http-2"]:
+resource "aws_instance" "http" {
+    [1m[0mami[0m[0m                          = "ami-0928f4202481dfdf6"
+    [1m[0marn[0m[0m                          = "arn:aws:ec2:us-west-2:271868875615:instance/i-094553efbe54fae0e"
+    [1m[0massociate_public_ip_address[0m[0m  = false
+    [1m[0mavailability_zone[0m[0m            = "us-west-2b"
+    [1m[0mcpu_core_count[0m[0m               = 1
+    [1m[0mcpu_threads_per_core[0m[0m         = 2
+    [1m[0mdisable_api_termination[0m[0m      = false
+    [1m[0mebs_optimized[0m[0m                = false
+    [1m[0mget_password_data[0m[0m            = false
+    [1m[0mhibernation[0m[0m                  = false
+    [1m[0mid[0m[0m                           = "i-094553efbe54fae0e"
+    [1m[0minstance_state[0m[0m               = "running"
+    [1m[0minstance_type[0m[0m                = "t3.large"
+    [1m[0mipv6_address_count[0m[0m           = 0
+    [1m[0mipv6_addresses[0m[0m               = []
+    [1m[0mkey_name[0m[0m                     = "charles"
+    [1m[0mmonitoring[0m[0m                   = false
+    [1m[0mprimary_network_interface_id[0m[0m = "eni-04946da1134fd55f9"
+    [1m[0mprivate_dns[0m[0m                  = "ip-10-10-1-161.us-west-2.compute.internal"
+    [1m[0mprivate_ip[0m[0m                   = "10.10.1.161"
+    [1m[0msecondary_private_ips[0m[0m        = []
+    [1m[0msecurity_groups[0m[0m              = []
+    [1m[0msource_dest_check[0m[0m            = true
+    [1m[0msubnet_id[0m[0m                    = "subnet-09ac4f8d70bdd8a59"
+    [1m[0mtags[0m[0m                         = {
+        "Name" = "instance-http-2"
+    }
+    [1m[0mtenancy[0m[0m                      = "default"
+    [1m[0muser_data[0m[0m                    = "13a85b70ffbe2a4138f02b3f920bea9687517de4"
+    [1m[0mvpc_security_group_ids[0m[0m       = [
+        "sg-01116a2d8621b5ae4",
+        "sg-09efb17d2d9913811",
+    ]
+
+    credit_specification {
+        [1m[0mcpu_credits[0m[0m = "unlimited"
+    }
+
+    enclave_options {
+        [1m[0menabled[0m[0m = false
+    }
+
+    metadata_options {
+        [1m[0mhttp_endpoint[0m[0m               = "enabled"
+        [1m[0mhttp_put_response_hop_limit[0m[0m = 1
+        [1m[0mhttp_tokens[0m[0m                 = "optional"
+    }
+
+    root_block_device {
+        [1m[0mdelete_on_termination[0m[0m = true
+        [1m[0mdevice_name[0m[0m           = "/dev/sda1"
+        [1m[0mencrypted[0m[0m             = false
+        [1m[0miops[0m[0m                  = 100
+        [1m[0mtags[0m[0m                  = {}
+        [1m[0mthroughput[0m[0m            = 0
+        [1m[0mvolume_id[0m[0m             = "vol-0e1a9ae6035809583"
+        [1m[0mvolume_size[0m[0m           = 8
+        [1m[0mvolume_type[0m[0m           = "gp2"
+    }
+}
+
+# aws_internet_gateway.gw:
+resource "aws_internet_gateway" "gw" {
+    [1m[0marn[0m[0m      = "arn:aws:ec2:us-west-2:271868875615:internet-gateway/igw-03c2749205ade40d9"
+    [1m[0mid[0m[0m       = "igw-03c2749205ade40d9"
+    [1m[0mowner_id[0m[0m = "271868875615"
+    [1m[0mtags[0m[0m     = {
+        "Name" = "internet-gateway"
+    }
+    [1m[0mvpc_id[0m[0m   = "vpc-0f1864c84ab49484e"
+}
+
+# aws_key_pair.user_key:
+resource "aws_key_pair" "user_key" {
+    [1m[0marn[0m[0m         = "arn:aws:ec2:us-west-2:271868875615:key-pair/charles"
+    [1m[0mfingerprint[0m[0m = "bc:e4:fe:5f:fa:48:70:a7:af:e5:48:0e:a6:74:db:f8"
+    [1m[0mid[0m[0m          = "charles"
+    [1m[0mkey_name[0m[0m    = "charles"
+    [1m[0mkey_pair_id[0m[0m = "key-0fa4bd7f45db71664"
+    [1m[0mpublic_key[0m[0m  = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDNjUjnmfXIsDQHPGS6y45a/cxVVOA6SFnA2nZZW5WFEwMj6RSBK+/oB+Rrcu+UDKQs9bqz1Nte7BM+N2Cvf295z7FKKtn8MBGG4NXXqq3wi9FwCinJf6oNrEqtoJnJNJwt9zyGvqxqY/yW2eG9JAmFO1YZsNB7CD3+pX7DB26ZvNuufWthUzxxnWbyKlW7nnAKtpy+Qw9YGx3xpkOPQ4AS0UJqFjM1mXv9zeVzWVOGt3nEbihjHwRUuiWM2EkyEsPEm0nscPLxoGKbrKolnrDwy/p9ZdFCTXeSrYwAlWuE0BAzBDBeR7ErApQPJ3vvdYwf49BFwEKg/dC1lP0fn8ch charles.lee@aktana.com"
+}
+
+# aws_lb.http:
+resource "aws_lb" "http" {
+    [1m[0marn[0m[0m                              = "arn:aws:elasticloadbalancing:us-west-2:271868875615:loadbalancer/net/http-lb/91c4340be3a35298"
+    [1m[0marn_suffix[0m[0m                       = "net/http-lb/91c4340be3a35298"
+    [1m[0mdns_name[0m[0m                         = "http-lb-91c4340be3a35298.elb.us-west-2.amazonaws.com"
+    [1m[0menable_cross_zone_load_balancing[0m[0m = false
+    [1m[0menable_deletion_protection[0m[0m       = false
+    [1m[0mid[0m[0m                               = "arn:aws:elasticloadbalancing:us-west-2:271868875615:loadbalancer/net/http-lb/91c4340be3a35298"
+    [1m[0minternal[0m[0m                         = false
+    [1m[0mip_address_type[0m[0m                  = "ipv4"
+    [1m[0mload_balancer_type[0m[0m               = "network"
+    [1m[0mname[0m[0m                             = "http-lb"
+    [1m[0msecurity_groups[0m[0m                  = []
+    [1m[0msubnets[0m[0m                          = [
+        "subnet-09ac4f8d70bdd8a59",
+    ]
+    [1m[0mtags[0m[0m                             = {
+        "Name" = "http-lb"
+    }
+    [1m[0mvpc_id[0m[0m                           = "vpc-0f1864c84ab49484e"
+    [1m[0mzone_id[0m[0m                          = "Z18D5FSROUN65G"
+
+    access_logs {
+        [1m[0menabled[0m[0m = false
+    }
+
+    subnet_mapping {
+        [1m[0msubnet_id[0m[0m = "subnet-09ac4f8d70bdd8a59"
+    }
+}
+
+# aws_lb_listener.http:
+resource "aws_lb_listener" "http" {
+    [1m[0marn[0m[0m               = "arn:aws:elasticloadbalancing:us-west-2:271868875615:listener/net/http-lb/91c4340be3a35298/2f2fe5f1629f8391"
+    [1m[0mid[0m[0m                = "arn:aws:elasticloadbalancing:us-west-2:271868875615:listener/net/http-lb/91c4340be3a35298/2f2fe5f1629f8391"
+    [1m[0mload_balancer_arn[0m[0m = "arn:aws:elasticloadbalancing:us-west-2:271868875615:loadbalancer/net/http-lb/91c4340be3a35298"
+    [1m[0mport[0m[0m              = 80
+    [1m[0mprotocol[0m[0m          = "TCP"
+
+    default_action {
+        [1m[0morder[0m[0m            = 1
+        [1m[0mtarget_group_arn[0m[0m = "arn:aws:elasticloadbalancing:us-west-2:271868875615:targetgroup/http-lb-target-group/8d5d214cbea3dd53"
+        [1m[0mtype[0m[0m             = "forward"
+    }
+}
+
+# aws_lb_target_group.http:
+resource "aws_lb_target_group" "http" {
+    [1m[0marn[0m[0m                                = "arn:aws:elasticloadbalancing:us-west-2:271868875615:targetgroup/http-lb-target-group/8d5d214cbea3dd53"
+    [1m[0marn_suffix[0m[0m                         = "targetgroup/http-lb-target-group/8d5d214cbea3dd53"
+    [1m[0mderegistration_delay[0m[0m               = 300
+    [1m[0mid[0m[0m                                 = "arn:aws:elasticloadbalancing:us-west-2:271868875615:targetgroup/http-lb-target-group/8d5d214cbea3dd53"
+    [1m[0mlambda_multi_value_headers_enabled[0m[0m = false
+    [1m[0mname[0m[0m                               = "http-lb-target-group"
+    [1m[0mport[0m[0m                               = 80
+    [1m[0mprotocol[0m[0m                           = "TCP"
+    [1m[0mproxy_protocol_v2[0m[0m                  = false
+    [1m[0mslow_start[0m[0m                         = 0
+    [1m[0mtags[0m[0m                               = {
+        "Name" = "http-lb-target-group"
+    }
+    [1m[0mtarget_type[0m[0m                        = "instance"
+    [1m[0mvpc_id[0m[0m                             = "vpc-0f1864c84ab49484e"
+
+    health_check {
+        [1m[0menabled[0m[0m             = true
+        [1m[0mhealthy_threshold[0m[0m   = 3
+        [1m[0minterval[0m[0m            = 30
+        [1m[0mport[0m[0m                = "traffic-port"
+        [1m[0mprotocol[0m[0m            = "TCP"
+        [1m[0mtimeout[0m[0m             = 10
+        [1m[0munhealthy_threshold[0m[0m = 3
+    }
+
+    stickiness {
+        [1m[0mcookie_duration[0m[0m = 0
+        [1m[0menabled[0m[0m         = false
+        [1m[0mtype[0m[0m            = "source_ip"
+    }
+}
+
+# aws_lb_target_group_attachment.http["instance-http-2"]:
+resource "aws_lb_target_group_attachment" "http" {
+    [1m[0mid[0m[0m               = "arn:aws:elasticloadbalancing:us-west-2:271868875615:targetgroup/http-lb-target-group/8d5d214cbea3dd53-20210216072617104900000001"
+    [1m[0mport[0m[0m             = 80
+    [1m[0mtarget_group_arn[0m[0m = "arn:aws:elasticloadbalancing:us-west-2:271868875615:targetgroup/http-lb-target-group/8d5d214cbea3dd53"
+    [1m[0mtarget_id[0m[0m        = "i-094553efbe54fae0e"
+}
+
+# aws_lb_target_group_attachment.http["instance-http-1"]:
+resource "aws_lb_target_group_attachment" "http" {
+    [1m[0mid[0m[0m               = "arn:aws:elasticloadbalancing:us-west-2:271868875615:targetgroup/http-lb-target-group/8d5d214cbea3dd53-20210216072617175600000002"
+    [1m[0mport[0m[0m             = 80
+    [1m[0mtarget_group_arn[0m[0m = "arn:aws:elasticloadbalancing:us-west-2:271868875615:targetgroup/http-lb-target-group/8d5d214cbea3dd53"
+    [1m[0mtarget_id[0m[0m        = "i-0644aa90a15747c21"
+}
+
+# aws_route_table.public:
+resource "aws_route_table" "public" {
+    [1m[0mid[0m[0m               = "rtb-00713ae16d7e7c9dc"
+    [1m[0mowner_id[0m[0m         = "271868875615"
+    [1m[0mpropagating_vgws[0m[0m = []
+    [1m[0mroute[0m[0m            = [
+        {
+            cidr_block                = "0.0.0.0/0"
+            egress_only_gateway_id    = ""
+            gateway_id                = "igw-03c2749205ade40d9"
+            instance_id               = ""
+            ipv6_cidr_block           = ""
+            local_gateway_id          = ""
+            nat_gateway_id            = ""
+            network_interface_id      = ""
+            transit_gateway_id        = ""
+            vpc_endpoint_id           = ""
+            vpc_peering_connection_id = ""
+        },
+    ]
+    [1m[0mvpc_id[0m[0m           = "vpc-0f1864c84ab49484e"
+}
+
+# aws_route_table_association.http:
+resource "aws_route_table_association" "http" {
+    [1m[0mid[0m[0m             = "rtbassoc-0721f0e112f94c4a9"
+    [1m[0mroute_table_id[0m[0m = "rtb-00713ae16d7e7c9dc"
+    [1m[0msubnet_id[0m[0m      = "subnet-09ac4f8d70bdd8a59"
+}
+
+# aws_security_group.administration:
+resource "aws_security_group" "administration" {
+    [1m[0marn[0m[0m                    = "arn:aws:ec2:us-west-2:271868875615:security-group/sg-09efb17d2d9913811"
+    [1m[0mdescription[0m[0m            = "Allow default administration service"
+    [1m[0megress[0m[0m                 = [
+        {
+            cidr_blocks      = [
+                "0.0.0.0/0",
+            ]
+            description      = ""
+            from_port        = 0
+            ipv6_cidr_blocks = []
+            prefix_list_ids  = []
+            protocol         = "-1"
+            security_groups  = []
+            self             = false
+            to_port          = 0
+        },
+    ]
+    [1m[0mid[0m[0m                     = "sg-09efb17d2d9913811"
+    [1m[0mingress[0m[0m                = [
+        {
+            cidr_blocks      = [
+                "0.0.0.0/0",
+            ]
+            description      = ""
+            from_port        = 22
+            ipv6_cidr_blocks = []
+            prefix_list_ids  = []
+            protocol         = "tcp"
+            security_groups  = []
+            self             = false
+            to_port          = 22
+        },
+        {
+            cidr_blocks      = [
+                "0.0.0.0/0",
+            ]
+            description      = ""
+            from_port        = 8
+            ipv6_cidr_blocks = []
+            prefix_list_ids  = []
+            protocol         = "icmp"
+            security_groups  = []
+            self             = false
+            to_port          = 0
+        },
+    ]
+    [1m[0mname[0m[0m                   = "administration"
+    [1m[0mowner_id[0m[0m               = "271868875615"
+    [1m[0mrevoke_rules_on_delete[0m[0m = false
+    [1m[0mtags[0m[0m                   = {
+        "Name" = "administration"
+    }
+    [1m[0mvpc_id[0m[0m                 = "vpc-0f1864c84ab49484e"
+}
+
+# aws_security_group.db:
+resource "aws_security_group" "db" {
+    [1m[0marn[0m[0m                    = "arn:aws:ec2:us-west-2:271868875615:security-group/sg-0a65f0c83f4f1b547"
+    [1m[0mdescription[0m[0m            = "Allow db incgress trafic"
+    [1m[0megress[0m[0m                 = [
+        {
+            cidr_blocks      = [
+                "0.0.0.0/0",
+            ]
+            description      = ""
+            from_port        = 0
+            ipv6_cidr_blocks = []
+            prefix_list_ids  = []
+            protocol         = "-1"
+            security_groups  = []
+            self             = false
+            to_port          = 0
+        },
+    ]
+    [1m[0mid[0m[0m                     = "sg-0a65f0c83f4f1b547"
+    [1m[0mingress[0m[0m                = [
+        {
+            cidr_blocks      = [
+                "0.0.0.0/0",
+            ]
+            description      = ""
+            from_port        = 3306
+            ipv6_cidr_blocks = []
+            prefix_list_ids  = []
+            protocol         = "tcp"
+            security_groups  = []
+            self             = false
+            to_port          = 3306
+        },
+    ]
+    [1m[0mname[0m[0m                   = "db"
+    [1m[0mowner_id[0m[0m               = "271868875615"
+    [1m[0mrevoke_rules_on_delete[0m[0m = false
+    [1m[0mtags[0m[0m                   = {
+        "Name" = "db"
+    }
+    [1m[0mvpc_id[0m[0m                 = "vpc-0f1864c84ab49484e"
+}
+
+# aws_security_group.web:
+resource "aws_security_group" "web" {
+    [1m[0marn[0m[0m                    = "arn:aws:ec2:us-west-2:271868875615:security-group/sg-01116a2d8621b5ae4"
+    [1m[0mdescription[0m[0m            = "Allow web incgress trafic"
+    [1m[0megress[0m[0m                 = [
+        {
+            cidr_blocks      = [
+                "0.0.0.0/0",
+            ]
+            description      = ""
+            from_port        = 0
+            ipv6_cidr_blocks = []
+            prefix_list_ids  = []
+            protocol         = "-1"
+            security_groups  = []
+            self             = false
+            to_port          = 0
+        },
+    ]
+    [1m[0mid[0m[0m                     = "sg-01116a2d8621b5ae4"
+    [1m[0mingress[0m[0m                = [
+        {
+            cidr_blocks      = [
+                "0.0.0.0/0",
+            ]
+            description      = ""
+            from_port        = 443
+            ipv6_cidr_blocks = []
+            prefix_list_ids  = []
+            protocol         = "tcp"
+            security_groups  = []
+            self             = false
+            to_port          = 443
+        },
+        {
+            cidr_blocks      = [
+                "0.0.0.0/0",
+            ]
+            description      = ""
+            from_port        = 80
+            ipv6_cidr_blocks = []
+            prefix_list_ids  = []
+            protocol         = "tcp"
+            security_groups  = []
+            self             = false
+            to_port          = 80
+        },
+    ]
+    [1m[0mname[0m[0m                   = "web"
+    [1m[0mowner_id[0m[0m               = "271868875615"
+    [1m[0mrevoke_rules_on_delete[0m[0m = false
+    [1m[0mtags[0m[0m                   = {
+        "Name" = "web"
+    }
+    [1m[0mvpc_id[0m[0m                 = "vpc-0f1864c84ab49484e"
+}
+
+# aws_subnet.http:
+resource "aws_subnet" "http" {
+    [1m[0marn[0m[0m                             = "arn:aws:ec2:us-west-2:271868875615:subnet/subnet-09ac4f8d70bdd8a59"
+    [1m[0massign_ipv6_address_on_creation[0m[0m = false
+    [1m[0mavailability_zone[0m[0m               = "us-west-2b"
+    [1m[0mavailability_zone_id[0m[0m            = "usw2-az2"
+    [1m[0mcidr_block[0m[0m                      = "10.10.1.0/24"
+    [1m[0mid[0m[0m                              = "subnet-09ac4f8d70bdd8a59"
+    [1m[0mmap_customer_owned_ip_on_launch[0m[0m = false
+    [1m[0mmap_public_ip_on_launch[0m[0m         = false
+    [1m[0mowner_id[0m[0m                        = "271868875615"
+    [1m[0mtags[0m[0m                            = {
+        "Name" = "subnet-http"
+    }
+    [1m[0mvpc_id[0m[0m                          = "vpc-0f1864c84ab49484e"
+}
+
+# aws_vpc.terraform:
+resource "aws_vpc" "terraform" {
+    [1m[0marn[0m[0m                              = "arn:aws:ec2:us-west-2:271868875615:vpc/vpc-0f1864c84ab49484e"
+    [1m[0massign_generated_ipv6_cidr_block[0m[0m = false
+    [1m[0mcidr_block[0m[0m                       = "10.10.0.0/16"
+    [1m[0mdefault_network_acl_id[0m[0m           = "acl-096934a3893217d2f"
+    [1m[0mdefault_route_table_id[0m[0m           = "rtb-030aff01985cffed5"
+    [1m[0mdefault_security_group_id[0m[0m        = "sg-0d84e24d2d3a31823"
+    [1m[0mdhcp_options_id[0m[0m                  = "dopt-43ccc621"
+    [1m[0menable_classiclink[0m[0m               = false
+    [1m[0menable_classiclink_dns_support[0m[0m   = false
+    [1m[0menable_dns_hostnames[0m[0m             = true
+    [1m[0menable_dns_support[0m[0m               = true
+    [1m[0mid[0m[0m                               = "vpc-0f1864c84ab49484e"
+    [1m[0minstance_tenancy[0m[0m                 = "default"
+    [1m[0mmain_route_table_id[0m[0m              = "rtb-030aff01985cffed5"
+    [1m[0mowner_id[0m[0m                         = "271868875615"
+    [1m[0mtags[0m[0m                             = {
+        "Name" = "vpc-terraform"
+    }
+}
+
+
+Outputs:
+
+http_ip = {
+    i-0644aa90a15747c21 = "10.10.1.14"
+    i-094553efbe54fae0e = "10.10.1.161"
+}
+lb_hostname_http = "http-lb-91c4340be3a35298.elb.us-west-2.amazonaws.com"[0m[0m

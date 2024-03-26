@@ -1,0 +1,3 @@
+NAME                  TYPE           CLUSTER-IP       EXTERNAL-IP                                                               PORT(S)        AGE
+kubernetes            ClusterIP      10.100.0.1       <none>                                                                    443/TCP        2m55s
+my-image-blue-green   LoadBalancer   10.100.218.164   a82149e4bcc974f3d94e3fa0c43d7a28-1760394351.us-west-2.elb.amazonaws.com   80:32092/TCP   2m

@@ -1,0 +1,26 @@
+version: 2.1
+orbs:
+  node: circleci/node@5.0.0
+jobs:
+  release:
+    executor: node/default
+    steps:
+      - checkout
+      - node/install-packages # Install and automatically cache packages
+      # Run optional required steps before releasing
+      # - run: npm run build-script
+      - run: |
+          git config --global user.name "$GITHUB_USERNAME"
+          git config --global user.email "$GITHUB_EMAIL"
+      - run:
+          name: Run semantic-release
+          command: npx semantic-release
+          environment:
+            GITHUB_TOKEN: "${GH_TOKEN}"
+
+workflows:
+  release:
+    # Run the test jobs first, then the release only when all the test jobs are successful
+    jobs:
+      - release:
+          context: semantic-release

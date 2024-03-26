@@ -1,0 +1,24 @@
+---
+version: 2.1
+orbs:
+  node: circleci/node@5.0.0
+jobs:
+  release:
+    executor: node/default
+    steps:
+      - checkout
+      - node/install-packages
+      - run: |
+          git config --global user.name "$GITHUB_USERNAME"
+          git config --global user.email "$GITHUB_EMAIL"
+      - run:
+          name: Run semantic-release
+          command: npx semantic-release
+          environment:
+            GITHUB_TOKEN: "${GH_TOKEN}"
+
+workflows:
+  release:
+    jobs:
+      - release:
+          context: semantic-release
