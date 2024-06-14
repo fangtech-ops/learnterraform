@@ -5,7 +5,7 @@ resource "aws_instance" "admin1" {
   for_each      = var.admin1_instance_names
   ami           = var.aws_amis[var.aws_region]
   instance_type = "t3.micro"
-  key_name      = "terraform1"
+  key_name      = "terraform3"
   vpc_security_group_ids = [
     aws_security_group.administration.id,
     aws_security_group.web.id,
@@ -32,7 +32,7 @@ resource "aws_instance" "admin2" {
   for_each      = var.admin2_instance_names
   ami           = var.aws_amis[var.aws_region]
   instance_type = "t3.medium"
-  key_name      = "terraform1"
+  key_name      = "terraform3"
   vpc_security_group_ids = [
     aws_security_group.administration.id,
     aws_security_group.web.id,

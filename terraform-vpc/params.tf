@@ -1,7 +1,7 @@
 # parms file for aws ec2 cloud
 variable "aws_region" {
   description = "AWS region to launch servers."
-  default     = "us-west-1"
+  default     = "us-west-2"
 }
 
 
@@ -10,7 +10,7 @@ variable "aws_region" {
 #### VPC Network
 variable "vpc_cidr" {
   type    = string
-  default = "172.31.0.0/16"
+  default = "10.31.0.0/16"
 }
 
 #### API
@@ -18,14 +18,14 @@ variable "network_admin1" {
   type = map(string)
   default = {
     subnet_name = "subnet_admin1"
-    cidr        = "172.31.21.0/24"
+    cidr        = "10.31.21.0/24"
   }
 }
 variable "network_admin2" {
   type = map(string)
   default = {
     subnet_name = "subnet_admin2"
-    cidr        = "172.31.22.0/24"
+    cidr        = "10.31.22.0/24"
   }
 }
 
@@ -34,21 +34,21 @@ variable "network_http1" {
   type = map(string)
   default = {
     subnet_name = "subnet_http1"
-    cidr        = "172.31.31.0/24"
+    cidr        = "10.31.31.0/24"
   }
 }
 variable "network_http2" {
   type = map(string)
   default = {
     subnet_name = "subnet_http2"
-    cidr        = "172.31.32.0/24"
+    cidr        = "10.31.32.0/24"
   }
 }
 variable "network_http3" {
   type = map(string)
   default = {
     subnet_name = "subnet_http3"
-    cidr        = "172.31.33.0/24"
+    cidr        = "10.31.33.0/24"
   }
 }
 
